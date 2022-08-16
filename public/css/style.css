@@ -10,3 +10,18 @@ body {background-color: yellowgreen;
 p { 
     margin: 10px 0 !important;
 }
+
+.fa-small {
+    /* use !important to override materialize */
+    font-size: 16px !important;
+
+}
+
+.btn-float{
+    float: left;
+    margin-right: 10px;
+}
+
+.img-small{
+    width:150px
+}

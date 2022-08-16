@@ -1,0 +1,39 @@
+<h3>Edit Story</h3>
+    <div class="row">
+        <form action="/stories/{{story._id}}" method="POST" class="col s12">
+            {{!-- by default, the method here is POST but methodOverride is enable it to switch to PUT method that's hidden here --}}
+            <input type="hidden" name="_method" value="PUT">
+            <div class="row">
+                <div class="input-field">
+                    <input type="text" id="title" name="title" value="{{story.title}}">
+                    <label for="title">Title</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field">
+                    {{!-- what does select tag do for us? It creates a shell of a dropdown --}}
+                    <select name="status" id="status">
+                        {{#select story.status}}
+                        <option value="public" selected>Public</option>
+                        <option value="private">Private</option>
+                        {{/select}}
+                    </select>
+                    <label for="status">Status</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field">
+                    <h5>Tell Us Your Story:</h5>
+                    {{!-- what's difference between textarea vs input of a text? You can adjust textarea box but you can't with input of a text  --}}
+                    <textarea name="body" id="body">{{story.body}}</textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <input type="submit" value="Save" class="btn">
+                <a href="/dashboard" class="btn orange">Cancel</a>
+            </div>
+        </form>
+    </div>
