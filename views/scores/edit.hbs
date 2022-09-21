@@ -1,0 +1,46 @@
+<h3>Edit Score</h3>
+    <div class="row">
+        <form action="/scores/{{score._id}}" method="POST" class="col s12">
+            {{!-- by default, the method here is POST but methodOverride is enable it to switch to PUT method that's hidden here --}}
+            <input type="hidden" name="_method" value="PUT">
+            <div class="row">
+                <div class="input-field">
+                    <input type="text" id="score" name="score" value="{{score.score}}">
+                    <label for="score">Score</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field">
+                    <input type="date" id="date" name="date" value="{{score.date}}">
+                    <label for="date">Date</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field">
+                    <input type="text" id="course_rating" name="course_rating" value="{{score.course_rating}}">
+                    <label for="course_rating">Course Rating</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field">
+                    <input type="number" id="slope" name="slope" value="{{score.slope}}">
+                    <label for="slope">Slope</label>
+                </div>
+            </div>
+
+             <div class="row">
+                <div class="input-field">
+                    <input type="text" id="courseName" name="courseName" value="{{score.courseName}}">
+                    <label for="courseName">Course Name</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <input type="submit" value="Save" class="btn">
+                <a href="/dashboard" class="btn orange">Cancel</a>
+            </div>
+        </form>
+    </div>

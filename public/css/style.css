@@ -1,4 +1,20 @@
-body {background-color: yellowgreen;
+@font-face{
+	font-family: Bobby Jones;
+	src: url(../font/BobbyJones/Bobby\ Rough\ Soft.ttf);
+}
+
+body {background-color: whitesmoke;
+    /* font-family: 'Bobby Jones'; */
+}
+
+img.navigation-logo {
+    /* Margin-top: .3em; */
+    height: 50px;
+}
+
+a.brand-logo.center {
+    Margin-top: 0.3em;
+    height: 50px;
 }
 
 .login-container {
@@ -22,6 +38,35 @@ p {
     margin-right: 10px;
 }
 
+
 .img-small{
-    width:150px
+    width:150px;
+    background-color: dark 
+}
+
+button.btn.waves-effect.waves-light.btn-small {
+    left: auto;
+    right: auto;
+    margin: 20px 0 0 0;
+}
+
+.row.teal.lighten-5 {
+    margin: 3em 0 -1em 0;
+    height: 5em;
+}
+
+.row .col.s6 {
+    width: 86%;
+}
+
+
+/* comment containers */
+.card-panel.teal.lighten-2.comments{
+    margin: 1em auto;
+    width: 90%;
+    /* text-align: center; */
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25em;
+    color: white;
 }

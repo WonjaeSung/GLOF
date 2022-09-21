@@ -14,20 +14,34 @@ module.exports ={
         }
         return str
     },
+    //No use currently but reduces length of a message if it's too long.
     stripTags: function (input) {
         return input.replace(/<(?:.|\n)*?>/gm, '')
     },
 
-    //
+    
+    //helper for floating edit icon
     editIcon: function (storyUser, loggedUser, storyId, floating = true) {
         if (storyUser._id.toString() == loggedUser._id.toString()) {
           if (floating) {
-            return `<a href="/stories/edit/${storyId}" class="btn-floating halfway-fab blue"><i class="fas fa-edit fa-small"></i></a>`
-          } else {
-            return `<a href="/stories/edit/${storyId}"><i class="fas fa-edit"></i></a>`
-          }
+            return `<a href="/scores/edit/${storyId}" class="btn-floating halfway-fab blue"><i class="fas fa-edit fa-small"></i></a>`
+          } 
         } else {
           return ''
+        }
+    },
+
+    //trash can only appearing for comment owners
+    trashCan: function (commentUser, loggedUser, commentId) {
+      if (commentUser._id.toString() == loggedUser._id.toString()) {
+          return `<form action="/comments/${commentId}" method="POST" id="delete-form">
+          <input type="hidden" name="_method" value="DELETE">
+            <button type="submit"class="btn grey">
+              <i class="fas fa-trash"></i>
+            </button>
+          </form>`
+      } else {
+        return ''
         }
     },
 

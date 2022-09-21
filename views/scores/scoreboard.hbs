@@ -1,0 +1,64 @@
+{{!-- script for materialize icons --}}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<h1>Scoreboard</h1>
+<div>
+    {{#each scores}}
+        <div class="card">
+            <div class="card-image">
+                {{!below is comparing a current user in the #each loop, to the user who is logged in outside of the loop. We use triple curly braces render HTML tags properly. Look in the helpers for editIcon code}} 
+                {{{editIcon user ../user _id}}}
+                {{!--potential change to edition --}}
+            </div>
+            <div class="card-content center-align">
+                <p><h4>{{score}}</h4> at {{courseName}}</p>
+                <p>Date: {{date}}</p>
+                <div class="chip"><img src="{{user.image}}" alt=""><a href="/profile/{{user._id}}">{{user.displayName}}</a>
+            </div>
+            <form action="/scores/{{_id}}/likes" method="POST" id="like-form">
+                <input type="hidden" name="_method" value="PUT">
+                <button type="submit"class="btn red">
+                    <i class="material-icons small">
+                        favorite_border
+                    </i>
+                 </button>
+            </form>
+
+            <div class="likes">
+            {{#if likes}}
+                <p>{{likes.length}} people like your post!</p> 
+            {{else}}
+                <p>No likes yet</p>
+            {{/if}}
+            </div>
+
+            
+            {{!-- <div class="card-action center-align">
+                <a href="/scores/{{_id}}" class ="btn grey">Read More</a> --}}
+                <form action="/comments/{{_id}}" method="POST">
+                    <div class="row teal lighten-5">
+                        <div class="input-field col s6">
+                            <input id="comment" name="comment" type="text" class="validate">
+                            <label class="active" for="comment">Comment</label>
+                                {{!-- post button --}}
+                        </div>
+                                <button class="btn waves-effect waves-light btn-small" type="submit" name="action">Post
+                                </button>    
+                    </div>
+                </form>
+
+                {{#each comments}}
+                    <div class="card-panel teal lighten-2 comments">
+                        {{comment}}  
+                        {{{trashCan user ../../user _id}}}               
+                        <div class="chip">{{user.displayName}}</div>
+                    </div>
+
+                {{/each}}
+            </div>
+        </div>
+       
+    {{else}}
+        <p>No score has been posted.</p>
+    {{/each}}
+</div>

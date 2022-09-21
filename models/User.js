@@ -20,6 +20,10 @@ const UserSchema = new mongoose.Schema({
     image: {
         type: String,
     },
+    follow: {
+        type: Array,
+        default: []
+    },
     createdAt: {
         type: Date,
         default: Date.now

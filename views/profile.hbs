@@ -1,0 +1,31 @@
+    <div class="col s12 m4">
+        <div class="card center-align">
+            <div class="card-action">
+                
+                {{!Change: add 'referrerpolicy="no-referrer"' to stop Google from blocking access to the profile images}}
+                <img src="{{profile.image}}" referrerpolicy="no-referrer" class="circle responsive-img img-small"><br>
+                <span class="card-title">{{profile.displayName}}</span><br><br>
+                <form action="/profile/{{profile._id}}/follow" method="POST" id="follow-form">
+                <input type="hidden" name="_method" value="PUT">
+                <button type="submit"class="btn lime">
+                    <i class="material-icons small">
+                        Follow
+                    </i>
+                 </button>
+            </form>
+
+            </div>
+        </div>
+    </div> 
+<div class="row">
+    {{#each scores}}
+        <div class="col s12 m8">
+            <div class="card story">
+                <div class="card-content">
+                    <h4>{{score}} <h6> at {{courseName}} </h6></h4>
+                    <span class="card-title">{{formatDate date 'MMMM Do YYYY'}}</span>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>

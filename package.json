@@ -2,7 +2,7 @@
   "name": "crud-with-traversy",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "scoreboard.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node app",
     "dev": "cross-env NODE_ENV=development nodemon app"

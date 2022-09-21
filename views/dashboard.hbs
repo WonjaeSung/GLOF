@@ -1,39 +1,59 @@
-<h1>DASHBOARD</h1>
-<h3>Welcome {{name}}</h3>
-<h6>Here are your stories</h6>
+<h3>Welcome {{name}}!</h3>
+{{#if handicapIndex includeZero=true}}<h4>Your current index is {{handicapIndex}}</h4>
+{{else}} <h4>You don't have enough scores calculate index.</h4>
+{{/if}}
+<h6>Here are your most recent scores posted:</h6>
 
-{{#if stories}}
+{{#if scores}}
     <table class="striped">
         <thead>
             <tr>
-                <th>Title</th>
+                {{!-- Table Header --}}
+                <th>Scores</th>
                 <th>Date</th>
-                <th>Status</th>
+                <th>CR/SLP</th>
+                <th>DIFF</th>
+                <th> </th>
+                <th>Course</th>
                 <th> </th>
             </tr>
         </thead>
         <tbody>
-            {{#each stories}}
+            {{#each scores}}
             <tr>
+                {{!-- Table Data --}}
                 <td>
-                    <a href="/stories/{{_id}}">{{title}}</a>
+                    {{score}}
                 </td>
                 <td>
                     {{!-- we are applying formatDate to createdAt --}}
-                    {{formatDate createdAt 'MMMM Do YYYY, h:mm:ss a'}}
+                    {{formatDate date 'MMMM Do YYYY'}}
                 </td>
                 <td>
-                    <span class="dash-status">{{status}}</span>
+                   <span>{{course_rating}}/{{slope}}</span>
                 </td>
                 <td>
-                    <a href="/stories/edit/{{_id}}" class="btn btn-float">
+                    <span>{{differential}}</span>
+                    {{!-- Differential calcultion --}}
+                    {{!-- <span>{{differential slope course_rating score}}</span> --}}
+                </td>
+                 <td>
+                    {{!-- ** A Score Differential is calculated using the following formula: (113 / Slope Rating) x (Adjusted Gross Score - Course Rating) --}}
+                   <span>{{diff}}</span>
+                </td>
+                <td>
+                   <span>{{courseName}}</span>
+                </td>
+                <td>
+                    <a href="/scores/edit/{{_id}}" class="btn btn-float">
                     <i class="fas fa-edit"></i>
                     </a>  
 
-                    <form action="/stories/{{_id}}" method="POST" id="delete-form">
+                    <form action="/scores/{{_id}}" method="POST" id="delete-form">
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="submit"class="btn red">
                             <i class="fas fa-trash"></i>
+                            
                         </button>
                     </form>
                 </td>
@@ -42,5 +62,5 @@
         </tbody>
     </table>
 {{else}}
-    <p>You have not created any stories. Add one now!</p>
+    <p>You have not posted any scores.</p>
 {{/if}}

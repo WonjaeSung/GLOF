@@ -8,6 +8,8 @@ const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
 const connectDB = require('./config/db')
+const router = express.Router()
+
 
 // Load config
 dotenv.config ({path: "./config/config.env" })
@@ -30,7 +32,7 @@ if(process.env.NODE_ENV === 'development'){
 };
 
 //Handlebars Helpers
-const {formatDate, truncate, stripTags, editIcon, select } = require('./helpers/hbs')
+const {formatDate, truncate, stripTags, editIcon, trashCan, select } = require('./helpers/hbs')
 
 //Handlebars
 //!Add the word .engine after exphbs
@@ -41,6 +43,7 @@ exphbs.engine({
         stripTags,
         truncate,
         editIcon,
+        trashCan,
         select,
     },
     defaultLayout: 'main',
@@ -90,8 +93,15 @@ app.use(express.static(path.join(__dirname, "public")))
 //Routes
 app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
-app.use('/stories', require('./routes/stories'))
+app.use('/scores', require('./routes/scores'))
+app.use('/comments', require('./routes/comments'))
+app.use('/profile', require('./routes/profile'))
+app.use('/peer', require('./routes/peer'))
+
+
 
 const PORT = process.env.PORT || 3000
 
 app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)) 
+
+module.exports = router
