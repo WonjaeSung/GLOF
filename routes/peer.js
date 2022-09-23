@@ -11,19 +11,19 @@ const User = require('../models/User')
  router.get('/', ensureAuth, async(req,res) => {
     try{
         const user = await User.findById(req.user.id).lean()
-
-        const diffs = []
+        const followers = []
         for(let i=0; i<user.follow.length; i++){
             const followingPlayer = user.follow[i]
-        followers.push(await Score.find({user: followingPlayer}).lean())
+            console.log(followingPlayer._id)
+            followers.push(await User.findById({_id: followingPlayer}).lean())
         }
+        console.log(followers)
 
 
         // scores.foreach((arraysOfScores=> find)
-        // console.log(scores)
 
         res.render('peer',{
-            scores
+            followers,
         })
     }
     catch(err){console.error(err)}

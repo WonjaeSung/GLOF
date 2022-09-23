@@ -34,6 +34,8 @@ router.put("/:id/follow",ensureAuth, async (req,res)=> {
         //if id of a user who is requesting, is not included in the like array of the score, add user's ID to the like array.
         if(!follower.follow.includes(req.params.id)){
             // The $push operator appends a specified value to an array.
+            console.log(req.params.id)
+            console.log(req.user.id)
             await follower.updateOne({$push: {follow: req.params.id}})
             await followed.updateOne({$push: {follow: req.user.id}})
          res.redirect(`/profile/${currentId}`)

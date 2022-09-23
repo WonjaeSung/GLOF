@@ -4,7 +4,7 @@
 }
 
 body {background-color: whitesmoke;
-    /* font-family: 'Bobby Jones'; */
+    font-family: 'Bobby Jones';
 }
 
 img.navigation-logo {
@@ -69,4 +69,9 @@ button.btn.waves-effect.waves-light.btn-small {
     justify-content: space-between;
     padding: 0.25em;
     color: white;
+}
+
+.card .card-content {
+    padding: .3em;
+    border-radius: 0 0 2px 2px;
 }

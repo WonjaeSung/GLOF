@@ -39,7 +39,7 @@ router.get('/dashboard', ensureAuth, async(req,res) => {
         else if(differentials.length<=18){handicapIndex = ((differentials.sort((a,b)=> a-b).slice(0,6).reduce((curr,acc)=>curr+=acc,0))/6).toFixed(1)}
         else if(differentials.length<=19){handicapIndex = ((differentials.sort((a,b)=> a-b).slice(0,7).reduce((curr,acc)=>curr+=acc,0))/7).toFixed(1)}
         else (handicapIndex = ((differentials.sort((a,b)=> a-b).slice(0,8).reduce((curr,acc)=>curr+=acc,0))/8).toFixed(1))
-        console.log(handicapIndex)
+
     
         // let handicapIndex = ((differentials.slice(0,8).reduce((acc,cur)=> acc+=cur,0))/8).toFixed(1)
 

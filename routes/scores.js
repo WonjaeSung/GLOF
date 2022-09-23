@@ -1,5 +1,6 @@
 const express = require("express")
 const router = express.Router()
+const mongoose = require('mongoose')
 const { ensureAuth } = require('../middleware/auth')
 const Comment = require('../models/Comment')
 const Score = require('../models/Score')
@@ -114,7 +115,7 @@ const Score = require('../models/Score')
  router.put('/:id', ensureAuth, async (req,res) => {
     try{
     //another mongoose method, findById!
-    let score = await Score.findById(req.params.id).lean()
+    let score = await Score.findById(req.params.id)
 
     if (!score){
         return res.render('error/404')
@@ -124,8 +125,13 @@ const Score = require('../models/Score')
         res.redirect('/scores')
 
     } else {
-        score = await Score.findOneAndUpdate({_id: req.params.id}, req.body, {new: true, runValidators: true
-        })
+        score.score = req.body.score
+        score.date = req.body.date
+        score.course_rating = req.body.course_rating
+        score.slope = req.body.slope
+        score.courseName = req.body.courseName
+
+        score.save()
         res.redirect('/dashboard')
     }
     }catch(err){
