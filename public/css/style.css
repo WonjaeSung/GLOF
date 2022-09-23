@@ -75,3 +75,22 @@ button.btn.waves-effect.waves-light.btn-small {
     padding: .3em;
     border-radius: 0 0 2px 2px;
 }
+
+/* profile score containers  */
+.row .col{
+    padding:0;
+}
+
+.card.story {
+    padding: .5em;
+  }
+
+  .col.s12.m6 {
+    padding: 0 .5em;
+  }
+
+/* delete buttons on dashboard */
+.deleteButton {
+  background: none;
+  border-style: none;
+}

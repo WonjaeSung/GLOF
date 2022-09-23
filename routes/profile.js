@@ -10,11 +10,16 @@ const User = require('../models/User')
 
  router.get('/:id', ensureAuth, async(req,res) => {
     try{
-        scores = await Score.find({user: req.params.id}).populate('user').lean()
+        let following = ""
+        scores = await Score.find({user: req.params.id}).sort({date: 'desc'}).populate('user').lean()
         profile = await User.findById(req.params.id).lean()
+        if(profile.follow.includes(req.user.id)){following = true}
+        else following = false
         res.render('profile',{
-            scores,profile
+            scores,profile,following,
         })
+        // console.log(req.user)
+        // console.log(profile)
     }
     catch(err){console.error(err)}
 })
@@ -34,16 +39,18 @@ router.put("/:id/follow",ensureAuth, async (req,res)=> {
         //if id of a user who is requesting, is not included in the like array of the score, add user's ID to the like array.
         if(!follower.follow.includes(req.params.id)){
             // The $push operator appends a specified value to an array.
-            console.log(req.params.id)
-            console.log(req.user.id)
+            console.log(follower)
+            console.log(followed)
             await follower.updateOne({$push: {follow: req.params.id}})
             await followed.updateOne({$push: {follow: req.user.id}})
          res.redirect(`/profile/${currentId}`)
     } else{
 
         // The $pull operator removes from an existing array ALL instances of a value or values that match a specified condition.
-        await follower.updateOne({ $pull: {follow: req.user.id}})
-        await followed.updateOne({ $pull: {follow: req.params.id}})
+        console.log(follower)
+        console.log(followed)
+        await follower.updateOne({ $pull: {follow: req.params.id}})
+        await followed.updateOne({ $pull: {follow: req.user.id}})
         res.redirect(`/profile/${currentId}`)
     }
 }catch(err){
