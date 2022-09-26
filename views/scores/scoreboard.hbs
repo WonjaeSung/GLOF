@@ -17,11 +17,19 @@
             </div>
             <form action="/scores/{{_id}}/likes" method="POST" id="like-form">
                 <input type="hidden" name="_method" value="PUT">
+                {{#if liked}}
                 <button type="submit"class="btn red">to unlike
                     <i class="material-icons small red" type="submit">
                         favorite_border
                     </i>
-                 </button>
+                </button>
+                {{else}}
+                <button type="submit"class="btn red">to like
+                    <i class="material-icons small red" type="submit">
+                        favorite
+                    </i>
+                </button>
+                {{/if}}
             </form>
 
             <div class="likes">

@@ -40,16 +40,17 @@ const Score = require('../models/Score')
         .sort({date: 'desc'})
         .lean();
 
-        let following = ""
+        let liked = ""
 
         for(const score of scores){
             score.comments = await Comment.find({scoreId: score._id}).populate('user').lean()
-            console.log(score.likes)
-            if(!score.likes.includes(req.user.id)|| score.likes !== undefined){following = false}
-            if(score.likes.includes(req.user.id)){following = true}
-            score.following = following
+            // console.log(typeof score.likes!=="object")
+            // console.log(score.likes.includes(req.user.id))
+            if(typeof score.likes !== "object"||!score.likes.includes(req.user.id)){liked = false}
+            if(score.likes.includes(req.user.id)){liked = true}
+            score.liked = liked
         }
-        // console.log(scores)
+        console.log(scores)
 
         res.render('scores/scoreboard',{
             scores,
