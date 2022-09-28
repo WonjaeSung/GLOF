@@ -43,7 +43,7 @@ router.get('/dashboard', ensureAuth, async(req,res) => {
     
         // let handicapIndex = ((differentials.slice(0,8).reduce((acc,cur)=> acc+=cur,0))/8).toFixed(1)
 
-        res.render('Dashboard',{
+        res.render('dashboard',{
             name: req.user.firstName,
             scores,
             handicapIndex,
