@@ -18,7 +18,7 @@ const User = require('../models/User')
         res.render('profile',{
             scores,profile,following,
         })
-        // console.log(req.user)
+        // console.log(req.user)    
         // console.log(profile)
     }
     catch(err){console.error(err)}
