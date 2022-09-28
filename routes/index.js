@@ -8,7 +8,7 @@ const Score = require('../models/Score')
  //@route GET /
 
  router.get('/', ensureGuest, (req,res) => {
-    res.render('Login',{
+    res.render('login',{
        layout: 'login',
     })
 })
