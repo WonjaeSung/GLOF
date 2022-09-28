@@ -1,10 +1,10 @@
-/* @font-face{
-	font-family: Bobby Jones;
-	src: url(../font/BobbyJones/Bobby\ Rough\ Soft.ttf);
-} */
+@font-face{
+	font-family: Open Sans;
+	src: url(../font/OpenSans/OpenSans-Medium.ttf);
+}
 
 body {background-color: whitesmoke;
-    /* font-family: 'Bobby Jones'; */
+    font-family: 'Open Sans';
 }
 
 img.navigation-logo {
@@ -59,10 +59,14 @@ button.btn.waves-effect.waves-light.btn-small {
     width: 86%;
 }
 
+/* scoreboard container */
+.card {
+    margin: 3em 0;
+}
 
 /* comment containers */
 .card-panel.teal.lighten-2.comments{
-    margin: 1em auto;
+    margin: .5em auto;
     width: 90%;
     /* text-align: center; */
     display: flex;
@@ -74,6 +78,27 @@ button.btn.waves-effect.waves-light.btn-small {
 .card .card-content {
     padding: .3em;
     border-radius: 0 0 2px 2px;
+}
+
+button.btn.grey.comment-delete-button {
+    padding: 0 0.4em;
+}
+
+.chip {
+    white-space: nowrap;
+}
+
+/* scoreboard comment form */
+form#comment-form {
+    margin-bottom: 1em;
+}
+
+p.comment-text {
+    margin: 0 0.5em !important;
+}
+
+.chip.comment-nametag {
+    margin: auto 0.15em;
 }
 
 /* profile score containers  */
@@ -89,8 +114,40 @@ button.btn.waves-effect.waves-light.btn-small {
     padding: 0 .5em;
   }
 
+ 
 /* delete buttons on dashboard */
+
+form#delete-form {
+    margin: auto 0;
+    padding-right: 0.5em;
+}
+
 .deleteButton {
   background: none;
   border-style: none;
 }
+
+
+/* Media queries  */
+@media only screen and (min-width: 451px) and (max-width: 720px) {
+    .row .col.s6 {
+        width: 80%;
+    }
+  }
+
+  @media only screen and (max-width: 450px) {
+    .row .col.s6 {
+        width: 75%;
+    }
+
+    .card-panel.teal.lighten-2.comments {
+        width: 100%;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    img.navigation-logo {
+        Margin-top: -0.15em;
+    }
+}
+

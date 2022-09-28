@@ -43,7 +43,7 @@
             
             {{!-- <div class="card-action center-align">
                 <a href="/scores/{{_id}}" class ="btn grey">Read More</a> --}}
-                <form action="/comments/{{_id}}" method="POST">
+                <form action="/comments/{{_id}}" method="POST" id="comment-form">
                     <div class="row teal lighten-5">
                         <div class="input-field col s6">
                             <input id="comment" name="comment" type="text" class="validate">
@@ -57,9 +57,9 @@
 
                 {{#each comments}}
                     <div class="card-panel teal lighten-2 comments">
-                        {{comment}}  
+                        <div class="chip comment-nametag">{{user.displayName}}</div>
+                        <p class="comment-text">{{comment}}</p>  
                         {{{trashCan user ../../user _id}}}               
-                        <div class="chip">{{user.displayName}}</div>
                     </div>
 
                 {{/each}}
