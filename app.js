@@ -11,7 +11,8 @@ const connectDB = require('./config/db')
 const router = express.Router()
 
 
-// Load config
+// Load config 
+//**FOR THE PURPOSE OF DEPLOYING, path was changed from ./config/config.env to ./config.env ***
 dotenv.config ({path: "./config.env" })
 
 //Passport config
@@ -89,6 +90,8 @@ app.use(function(req,res,next){
 
 //static folder, __dirname is saying look into local storage that the current file is in.
 app.use(express.static(path.join(__dirname, "public")))
+
+app.use(express.static(path.join(__dirname, "views")))
 
 //Routes
 app.use('/', require('./routes/index'))
