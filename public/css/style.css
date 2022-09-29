@@ -7,6 +7,18 @@ body {background-color: whitesmoke;
     font-family: 'Open Sans';
 }
 
+.btn.teal.accent-1 {
+    color: gray;
+  }
+
+a {
+    color: black;
+}
+
+a.btn-floating.btn-large.createscorebtn {
+    background: #7dc6d5;
+}
+
 img.navigation-logo {
     /* Margin-top: .3em; */
     height: 50px;
@@ -37,6 +49,10 @@ p {
     float: left;
     margin-right: 10px;
 }
+
+.dashboard-header {
+    font-size: 1.5em;
+  }
 
 
 .img-small{
@@ -75,6 +91,11 @@ button.btn.waves-effect.waves-light.btn-small {
     color: white;
 }
 
+.deleteButton.btn {
+    padding: 0 3px;
+    background-color: whitesmoke;
+    box-shadow: none;
+  }
 .card .card-content {
     padding: .3em;
     border-radius: 0 0 2px 2px;
@@ -83,6 +104,26 @@ button.btn.waves-effect.waves-light.btn-small {
 button.btn.grey.comment-delete-button {
     padding: 0 0.4em;
 }
+
+.delete-edit-buttons {
+    display: flex;
+    justify-content: space-around;
+    width:60px;
+  }
+
+  .handicapIndex {
+    font-size: xx-large;
+    color: chocolate;
+  }
+
+  .small.btn.lime.lighten-2 {
+    padding: 0 3px;
+    background-color: whitesmoke !important;
+    box-shadow: none;
+  }
+  .small.material-icons {
+    color: gray;
+  }
 
 .chip {
     white-space: nowrap;
@@ -95,11 +136,13 @@ form#comment-form {
 
 p.comment-text {
     margin: 0 0.5em !important;
+    text-align: initial;
 }
 
 .chip.comment-nametag {
     margin: auto 0.15em;
 }
+
 
 /* profile score containers  */
 .row .col{
@@ -120,6 +163,7 @@ p.comment-text {
 form#delete-form {
     margin: auto 0;
     padding-right: 0.5em;
+    margin-left: inherit;
 }
 
 .deleteButton {
@@ -127,6 +171,11 @@ form#delete-form {
   border-style: none;
   margin-left: inherit;
 }
+
+.tiny.material-icons {
+    color: gray;
+    background-color: whitesmoke;
+  }
 
 label {
     pointer-events: none;

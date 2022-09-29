@@ -1,14 +1,15 @@
 {{!-- enabling materlize icons --}}
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<h3>Welcome {{name}}!</h3>
-{{#if handicapIndex includeZero=true}}<h4>Your current index is {{handicapIndex}}</h4>
-{{else}} <h4>You don't have enough scores calculate index.</h4>
+<h4 class="dashboard-header">Welcome {{name}}!</h4>
+
+{{#if handicapIndex includeZero=true}}<h5>Your current index is <span class="handicapIndex">{{handicapIndex}}</span></h5>
+{{else}} <h5>You don't have enough scores calculate index.</h5>
 {{/if}}
 <h6>Here are your most recent scores posted:</h6>
 
 {{#if scores}}
-    <table class="striped">
+    <table class="highlight">
         <thead>
             <tr>
                 {{!-- Table Header --}}
@@ -48,16 +49,17 @@
                    <span>{{courseName}}</span>
                 </td>
                 <td>
-                    <a href="/scores/edit/{{_id}}" class="small btn  lime lighten-2">
-                     <i class="material-icons">edit</i></a>  
-
-                    <form action="/scores/{{_id}}" method="POST" onSubmit="return confirm('Are you sure you wish to delete?');" id="delete-form">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="deleteButton btn  deep-orange lighten-3">
-                            <i class="tiny material-icons">delete</i>
-                            
-                        </button>
-                    </form>
+                    <div class="delete-edit-buttons">
+                        <a href="/scores/edit/{{_id}}" class="small btn  lime lighten-2">
+                            <i class="small material-icons">edit</i>
+                        </a>  
+                        <form action="/scores/{{_id}}" method="POST" onSubmit="return confirm('Are you sure you wish to delete?');" id="delete-form">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="deleteButton btn">
+                                <i class="tiny material-icons">delete</i>
+                            </button>
+                        </form>
+                    </div>
                 </td>
             </tr>
             {{/each}}
