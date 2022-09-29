@@ -13,7 +13,7 @@ const router = express.Router()
 
 // Load config 
 //**FOR THE PURPOSE OF DEPLOYING, path was changed from ./config/config.env to ./config.env ***
-dotenv.config ({path: "./config/config.env" })
+dotenv.config ({path: "./config.env" })
 
 //Passport config
 require('./config/passport')(passport)
