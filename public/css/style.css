@@ -125,7 +125,12 @@ form#delete-form {
 .deleteButton {
   background: none;
   border-style: none;
+  margin-left: inherit;
 }
+
+label {
+    pointer-events: none;
+  }
 
 
 /* Media queries  */

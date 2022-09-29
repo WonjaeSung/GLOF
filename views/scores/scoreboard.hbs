@@ -46,8 +46,10 @@
                 <form action="/comments/{{_id}}" method="POST" id="comment-form">
                     <div class="row teal lighten-5">
                         <div class="input-field col s6">
+                            <label class="active" for="comment">Comment
+                            </label>
                             <input id="comment" name="comment" type="text" class="validate">
-                            <label class="active" for="comment">Comment</label>
+                            
                                 {{!-- post button --}}
                         </div>
                                 <button class="btn waves-effect waves-light btn-small" type="submit" name="action">Post
@@ -56,12 +58,13 @@
                 </form>
 
                 {{#each comments}}
+           
                     <div class="card-panel teal lighten-2 comments">
                         <div class="chip comment-nametag">{{user.displayName}}</div>
-                        <p class="comment-text">{{comment}}</p>  
-                        {{{trashCan user ../../user _id}}}               
+                        <div><p class="comment-text">{{comment}}</p></div>              
+                        <div class="deleteButton">{{{trashCan user ../../user _id}}}</div> 
                     </div>
-
+                
                 {{/each}}
             </div>
         </div>
