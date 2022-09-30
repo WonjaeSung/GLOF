@@ -18,15 +18,15 @@
             <form action="/scores/{{_id}}/likes" method="POST" id="like-form">
                 <input type="hidden" name="_method" value="PUT">
                 {{#if liked}}
-                <button type="submit"class="btn red">to unlike
-                    <i class="material-icons small red" type="submit">
-                        favorite_border
+                <button type="submit"class="btn red">
+                    <i class="medium material-icons red" type="submit">
+                        favorite
                     </i>
                 </button>
                 {{else}}
-                <button type="submit"class="btn red">to like
-                    <i class="material-icons small red" type="submit">
-                        favorite
+                <button type="submit"class="btn red">
+                    <i class="medium material-icons red" type="submit">
+                        favorite_border
                     </i>
                 </button>
                 {{/if}}
@@ -34,9 +34,9 @@
 
             <div class="likes">
             {{#if likes}}
-                <p>{{likes.length}} people like your post!</p> 
+                <p class="like-phrase">{{likes.length}} people like your post!</p> 
             {{else}}
-                <p>No likes yet</p>
+                <p class="like-phrase">No likes yet</p>
             {{/if}}
             </div>
 
@@ -44,7 +44,7 @@
             {{!-- <div class="card-action center-align">
                 <a href="/scores/{{_id}}" class ="btn grey">Read More</a> --}}
                 <form action="/comments/{{_id}}" method="POST" id="comment-form">
-                    <div class="row teal lighten-5">
+                    <div class="row comment-input">
                         <div class="input-field col s6">
                             <label class="active" for="comment">Comment
                             </label>
@@ -59,7 +59,7 @@
 
                 {{#each comments}}
            
-                    <div class="card-panel teal lighten-2 comments">
+                    <div class="highlight comments">
                         <div class="chip comment-nametag">{{user.displayName}}</div>
                         <div><p class="comment-text">{{comment}}</p></div>              
                         <div class="deleteButton">{{{trashCan user ../../user _id}}}</div> 

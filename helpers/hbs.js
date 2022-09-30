@@ -36,7 +36,7 @@ module.exports ={
       if (commentUser._id.toString() == loggedUser._id.toString()) {
           return `<form action="/comments/${commentId}" method="POST" id="delete-form">
           <input type="hidden" name="_method" value="DELETE">
-            <button type="submit"class="btn grey comment-delete-button">
+            <button type="submit"class="btn comment-delete-button">
               <i class="fas fa-trash comment-delete-icon"></i>
             </button>
           </form>`
